@@ -130,7 +130,10 @@ namespace ColorChannelExtractor
 
 			Matrix4x4 invertedChromaciyMatrix;
 			Matrix4x4.Invert(chromacityMatrix, out invertedChromaciyMatrix);
-			Vector3 S = Vector3.Transform(whitePointXYZ, invertedChromaciyMatrix);
+			Vector3 S = new Vector3(
+				invertedChromaciyMatrix.M11 * whitePointXYZ.X + invertedChromaciyMatrix.M12 * whitePointXYZ.Y + invertedChromaciyMatrix.M13 * whitePointXYZ.Z,
+				invertedChromaciyMatrix.M21 * whitePointXYZ.X + invertedChromaciyMatrix.M22 * whitePointXYZ.Y + invertedChromaciyMatrix.M23 * whitePointXYZ.Z,
+				invertedChromaciyMatrix.M31 * whitePointXYZ.X + invertedChromaciyMatrix.M32 * whitePointXYZ.Y + invertedChromaciyMatrix.M33 * whitePointXYZ.Z);
 
 			Matrix4x4 transformationMatrix = new Matrix4x4(
 				chromacityMatrix.M11 * S.X, chromacityMatrix.M12 * S.Y, chromacityMatrix.M13 * S.Z, 0.0f,

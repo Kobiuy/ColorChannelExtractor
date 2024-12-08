@@ -60,7 +60,7 @@ namespace ColorChannelExtractor
 			return (channelH, channelS, channelV);
 		}
 
-		public (Bitmap C0, Bitmap C1, Bitmap C2) ConvertToLab()
+		public (Bitmap C0, Bitmap C1, Bitmap C2) ConvertToLab() // TODO ścieżki do zdjęć
 		{
 			Bitmap channelL = new Bitmap(_bitmap.Width, _bitmap.Height);
 			Bitmap channela = new Bitmap(_bitmap.Width, _bitmap.Height);
